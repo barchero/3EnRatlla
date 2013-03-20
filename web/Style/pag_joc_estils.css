@@ -1,0 +1,98 @@
+h1{
+	text-align:center;
+	text-decoration:underline overline;
+	color:#2E8B57;
+}
+#taulell_joc{
+	border-style:solid;
+	border-width:3px;
+	border-spacing:0px;
+	border-color:000;
+	height:400px;
+	width:400px;
+	border-radius: 43px;
+	background-color: #FFCC00;
+}
+#taulell_joc td{
+	height:33%; 
+	width:33%;
+ 	border:solid;
+	border-color:000;
+	border-width:3px;
+	border-radius: 40px;
+	background-color: #2A8EFF;
+}
+#taulell_joc td:hover{
+	background-color:#f00;
+}
+#nom_tauler{
+	text-align:center;
+	margin-top: -5%;
+	font-weight: bold;
+}
+#capa_info{
+	border-style:solid;
+	border-width:1px;
+	border-spacing:0px;
+	border-color:#000000;
+	width:250px;
+	
+	/*Posició del taulell: */
+	position:absolute;
+	right: 10px;
+	top: 0px;
+	margin-top: 8%;
+}
+#taula_infoJoc{
+	border-style:solid;
+	border-width:1px;
+	border-spacing:0px;
+	border-color:#000000;
+}
+#taula_infoJoc td{
+	border-style:solid;
+	border-width:1px;
+	border-spacing:0px;
+	border-color:#000000;
+}
+.num_jugadors{
+	width:20px;
+	text-align:center;
+	font-weight:bold;
+	font-size:20px;
+	background-color: green;
+}
+#nomJugador1, #nomJugador2{
+	text-align:center;
+}
+#explicacioJoc{
+	height:110px;
+}
+#contador{
+	text-align:center;
+}
+#capa_joc{
+	width:100%; 	
+}
+#divPare_formLogin{
+	padding: 5% 0;
+}
+#div_formLogin{
+	padding: 10% 0;
+	width: 300px;
+	margin: auto;
+}
+#inputNomFormLogin{
+	margin-top: 5%;
+}
+#submitFormLogin{
+	margin-top: 8%;
+	margin-left: 35%;
+	border-radius: 4px;	
+        border-color:#000000;
+        background-color:#2A8EFF;
+        border-width:3px;
+        border-style:solid;
+        font-size:12px;
+        font-family:"Comic Sans MS";
+}
