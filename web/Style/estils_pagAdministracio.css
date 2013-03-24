@@ -1,0 +1,29 @@
+#div_form{
+	border-color: #000000;
+	border-width: 4px;
+	text-align: center;
+	margin-top: 5%;
+}
+#submit_inicialitzar{
+	margin-right: 5%;
+	font-family: "Comic Sans MS";
+	border-radius: 4px;
+	height: 100px;
+	width: 300px;
+	font-size: 20px;
+	font-weight: bold;
+}
+#submit_reiniciar{
+	font-family: "Comic Sans MS";
+	border-radius: 4px;
+	font-weight: bold;
+	height: 100px;
+	width: 300px;
+	font-size: 20px;
+}
+h1{
+	text-align: center;
+}
+body{
+	background-color:#2A8EFF;
+}
