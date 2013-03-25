@@ -8,6 +8,7 @@ package ratlla;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -98,15 +99,16 @@ public class main extends HttpServlet {
                 
                 tauler.addPlayer(player);
                 Players.add(player);
-                url = "game.jsp";
+                url = "/game.jsp";
                 
             }else{
-                url = "index.jsp";
+                url = "/index.jsp";
             }
             
             try 
             {
-              request.getRequestDispatcher(url).forward(request, response);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+                dispatcher.forward(request,response);
             }
             catch (ServletException e)
             {

@@ -10,7 +10,7 @@ package ratlla;
  * @author DAW
  */
 public class Player {
-    public String name
+    public String name;
     
     public Player(String name){
         this.name = name;
