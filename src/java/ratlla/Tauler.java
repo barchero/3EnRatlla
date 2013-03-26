@@ -35,10 +35,11 @@ public class Tauler {
         }
     }
     public void changeTurn(){
-        for(int i = 0; i< players.length; i++){
-            if(this.players[i].getName() != this.activePlayer.getName()){
-                this.activePlayer = this.players[i];
-                break;
+        if(this.activePlayer != null){
+            if(this.players[0].getName().equals(activePlayer.getName())){
+                activePlayer = this.players[1];
+            }else{
+                activePlayer = this.players[0];
             }
         }
     }

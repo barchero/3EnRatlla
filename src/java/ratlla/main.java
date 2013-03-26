@@ -27,12 +27,13 @@ public class main extends HttpServlet {
         
         Taulers = new ArrayList<Tauler>();
         Players = new ArrayList<Player>();
+        startTaulers(5);
     }
     
     @Override
     public void init() throws ServletException {
         super.init();              
-        startTaulers(5);
+        
     }
 
      protected void startTaulers(int num){
@@ -99,17 +100,28 @@ public class main extends HttpServlet {
                 
                 tauler.addPlayer(player);
                 Players.add(player);
-                url = "/game.jsp";
+                url = "game.jsp";
                 
             }else{
-                url = "/index.jsp";
-            }            
+                url = "index.jsp";
+            }
+            //request.getRequestDispatcher(url).forward(request, response);
           } else {
-            /*tauler = (Tauler)session.getAttribute("tauler");
-            player = (Player)session.getAttribute("player");*/
-            url = "/game.jsp";
+            tauler = (Tauler)session.getAttribute("tauler");
+            tauler.changeTurn();
+            /*player = (Player)session.getAttribute("player");
+            session.setAttribute("tauler", tauler);
+            session.setAttribute("player", player);*/
+            String posX = request.getParameter("x");
+            String posy = request.getParameter("y");
+            
+            //location.reload(true);
+            url = "game.jsp";
+            
+            //request.getRequestDispatcher(url).forward(request, response);
           }
-          request.getRequestDispatcher(url).forward(request, response);
+          response.sendRedirect(url);
+          
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
