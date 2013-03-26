@@ -13,11 +13,14 @@
         <script type="text/javascript" src="./js/pag_joc_javascript.js"></script>
         <link rel="StyleSheet" href="./Style/pag_joc_estils.css" type="text/css">
         <%
+            
             Player player = (Player)request.getSession().getAttribute("player");
             Tauler tauler =  (Tauler)request.getSession().getAttribute("tauler");
         %>
 	</head>
-	<body <% if(tauler.activePlayer.getName() != player.getName()){out.println("onload='startTimeout()'");} %> >
+	<body <% if(tauler.activePlayer == null){
+                    out.println("onload='startTimeout()'");
+                 }else if(tauler.activePlayer.getName() != player.getName()){out.println("onload='startTimeout()'");} %> >
             <h1>3 EN RATLLA</h1>
 		<div id="capa_joc">
 			<div id="capa_taulell" align="center">
@@ -59,11 +62,11 @@
 					<table id="taula_infoJoc" width='100%'>
 						<tr>
 							<td class="num_jugadors">1</td>
-							<td id="nomJugador1"><% out.println(tauler.players[0].getName());%> </td>
+							<td id="nomJugador1"><% if(tauler.players[0] != null){out.println(tauler.players[0].getName());}%> </td>
 						</tr>
 						<tr>
 							<td class="num_jugadors">2</td>
-							<td id="nomJugador2"><% out.println(tauler.players[1].getName());%></td>
+							<td id="nomJugador2"><% if(tauler.players[1] != null){out.println(tauler.players[1].getName());}%></td>
 						</tr>
 						<tr>
 							<td id="explicacioJoc" colspan="2">wee</td>

@@ -88,7 +88,7 @@ public class main extends HttpServlet {
           Tauler tauler;
           String url;
           
-          if (session.isNew() == true) {
+          if ((Player)session.getAttribute("player") == null) {
             String nom = (String)request.getParameter("inputNomFormLogin");
             if( playerRepeat(nom) == false){
                 player = new Player(nom);
@@ -103,55 +103,21 @@ public class main extends HttpServlet {
                 
             }else{
                 url = "/index.jsp";
-            }
-            
-            try 
-            {
-                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-                dispatcher.forward(request,response);
-            }
-            catch (ServletException e)
-            {
-              e.printStackTrace();
-            }
-            
-            text = "You are a new user";
+            }            
           } else {
-            tauler = (Tauler)session.getAttribute("tauler");
-            player = (Player)session.getAttribute("player");
-            text = "You are a common user";
+            /*tauler = (Tauler)session.getAttribute("tauler");
+            player = (Player)session.getAttribute("player");*/
+            url = "/game.jsp";
           }
-          
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet main</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet main at " + text + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
-            out.close();
-        }
+          request.getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP
-     * <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        super.doGet(request, response); //To change body of generated methods, choose Tools | Templates.
         processRequest(request, response);
     }
 
