@@ -84,7 +84,6 @@ public class main extends HttpServlet {
             throws ServletException, IOException {
         
           HttpSession session = request.getSession(true);
-          String text;
           Player player;
           Tauler tauler;
           String url;
@@ -108,13 +107,17 @@ public class main extends HttpServlet {
             //request.getRequestDispatcher(url).forward(request, response);
           } else {
             tauler = (Tauler)session.getAttribute("tauler");
+            player = (Player)session.getAttribute("player");
             tauler.changeTurn();
             /*player = (Player)session.getAttribute("player");
             session.setAttribute("tauler", tauler);
             session.setAttribute("player", player);*/
-            String posX = request.getParameter("x");
-            String posy = request.getParameter("y");
             
+            String posX = request.getParameter("x");
+            String posY = request.getParameter("y");
+            if(posX != "" && posY != ""){
+                tauler.choiceCell(posX, posY, player);
+            }
             //location.reload(true);
             url = "game.jsp";
             

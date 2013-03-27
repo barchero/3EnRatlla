@@ -22,7 +22,7 @@
             int player1 = 0;
             int player2 = 0;
             String color;
-            String td_color;
+            String td_color="";
             String click = "";
             if(tauler.activePlayer != null){
                 if(tauler.activePlayer.getName().equals(tauler.players[0].getName())){
@@ -55,22 +55,28 @@
 		<div id="capa_joc">
 			<div id="capa_taulell" align="center">
 				<table id="taulell_joc">
-                                    <%for(int f=0; f<3; f++){
-                                        out.println("<tr>");
-                                        for(int j=0; j<3; j++){
-                                            if(tauler.caselles[f][j] == 1){
-                                                td_color = "#2E8B57";
+                                    <%for(int f=0; f<3; f++){%>
+                                        <tr>
+                                        <%
+                                        for(int j=0; j<3; j++){                                            
+                                            td_color = "";
+                                            click = "";
+                                            if(tauler.caselles[f][j] == 1){                                                
+                                                td_color = "style='background-color:#2E8B57'";
                                             }else if(tauler.caselles[f][j] == 2){
-                                                td_color = "#f00";
-                                            }else{
-                                                td_color = "#2A8EFF";
+                                                td_color = "style='background-color:#f00'";
+                                            }else if(tauler.activePlayer != null){
+                                                if(!tauler.activePlayer.getName().equals(player.getName())){
                                                 click = "onclick='select(this.id)'";
+                                                }
                                             }
                                             %>
-                                            <td id='<%=f+"_"+j%>' style='background-color:<%=td_color%>' <%=click%> >&nbsp;</td>
+                                            <td id='<%=f+"_"+j%>' <%=td_color%>  <%=click%> >&nbsp;</td>
                                             <%
                                         }
-                                        out.println("</tr>");
+                                        %>
+                                        </tr>
+                                        <%
                                     }
                                         %>
 				</table>

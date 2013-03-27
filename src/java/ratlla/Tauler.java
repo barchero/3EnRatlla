@@ -54,5 +54,15 @@ public class Tauler {
         }
             
     }
+    public void choiceCell(String i_x, String i_y, Player player){
+        
+        int x = Integer.parseInt(i_x);
+        int y = Integer.parseInt(i_y);
+        if(player.getName().equals(players[0].getName())){
+            caselles[x][y] = 1;
+        }else{
+            caselles[x][y] = 2;
+        }
+    }
     
 }
