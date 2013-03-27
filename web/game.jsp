@@ -9,10 +9,11 @@
                 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>3 en ratlla</title>
-		
+	
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="./js/pag_joc_javascript.js"></script>
 
-        <link rel="StyleSheet" href="./Style/pag_joc_estils.css" type="text/css">
+
 
         <%
             
@@ -21,6 +22,8 @@
             int player1 = 0;
             int player2 = 0;
             String color;
+            String td_color;
+            String click = "";
             if(tauler.activePlayer != null){
                 if(tauler.activePlayer.getName().equals(tauler.players[0].getName())){
                     player2 = 1;
@@ -34,12 +37,13 @@
                 color = "#f00";
             }
         %>
-        <style>
-            #taulell_joc td:hover{
-                
-                background-color:<% out.println(color);%>;
+        <link rel="StyleSheet" href="./Style/pag_joc_estils.css" type="text/css">
+        <style type="text/css">
+            #taulell_joc td:hover{                
+                background-color:<%=color%>;
             }
         </style>
+
 	</head>
 	<body <% if(tauler.activePlayer == null){
                     out.println("onload='startTimeout()'");
@@ -51,21 +55,24 @@
 		<div id="capa_joc">
 			<div id="capa_taulell" align="center">
 				<table id="taulell_joc">
-					<tr>
-                                            <td id ="0_0" onclick="select(this.id)">&nbsp;</td>
-						<td id ="0_1" onclick="select(this.id)">&nbsp;</td>
-						<td id ="0_2" onclick="select(this.id)">&nbsp;</td>
-					</tr>
-					<tr>
-						<td id ="1_0" onclick="select(this.id)">&nbsp;</td>
-						<td id ="1_1" onclick="select(this.id)">&nbsp;</td> 
-						<td id ="1_2" onclick="select(this.id)">&nbsp;</td>
-					</tr>
-					<tr>
-						<td id ="2_0" onclick="select(this.id)">&nbsp;</td>
-						<td id ="2_1" onclick="select(this.id)">&nbsp;</td>
-						<td id ="2_2" onclick="select(this.id)">&nbsp;</td>
-					</tr>
+                                    <%for(int f=0; f<3; f++){
+                                        out.println("<tr>");
+                                        for(int j=0; j<3; j++){
+                                            if(tauler.caselles[f][j] == 1){
+                                                td_color = "#2E8B57";
+                                            }else if(tauler.caselles[f][j] == 2){
+                                                td_color = "#f00";
+                                            }else{
+                                                td_color = "#2A8EFF";
+                                                click = "onclick='select(this.id)'";
+                                            }
+                                            %>
+                                            <td id='<%=f+"_"+j%>' style='background-color:<%=td_color%>' <%=click%> >&nbsp;</td>
+                                            <%
+                                        }
+                                        out.println("</tr>");
+                                    }
+                                        %>
 				</table>
 				
 				<table id="taula_lateral">

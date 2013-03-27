@@ -10,7 +10,7 @@ package ratlla;
  */
 public class Tauler {
     
-    protected int[][] caselles;
+    public int[][] caselles;
     public Player[] players;
     public Player activePlayer;
     public int numTauler;
