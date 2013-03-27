@@ -14,6 +14,7 @@ public class Tauler {
     public Player[] players;
     public Player activePlayer;
     public int numTauler;
+    public int winner=0;
     
     public Tauler(int number){
         this.numTauler = number;
@@ -63,6 +64,32 @@ public class Tauler {
         }else{
             caselles[x][y] = 2;
         }
+    }
+    public void checkWinner(){
+        //horitzontal
+        for(int i = 0; i<3; i++){
+            if(caselles[i][0] == caselles[i][1] && caselles[i][1] == caselles[i][2]){
+                winner = caselles[i][0];
+            }
+        }
+        //vertical
+        if(winner == 0){
+        
+            for(int v = 0; v<3; v++){
+                if(caselles[0][v] == caselles[1][v] && caselles[1][v]==caselles[2][v]){
+                    winner = caselles[0][v];
+                }
+            }
+        }
+        //diagonal
+        if(winner == 0){
+            if(caselles[0][0] == caselles[1][1] && caselles[1][1] == caselles[2][2]){
+                winner = caselles[0][0];
+            }else if(caselles[0][2] == caselles[1][1] && caselles[1][1] == caselles[2][0] ){
+                winner = caselles[0][2];
+            }
+            
+        }        
     }
     
 }

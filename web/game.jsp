@@ -24,6 +24,7 @@
             String color;
             String td_color="";
             String click = "";
+            String winnerName = "";
             if(tauler.activePlayer != null){
                 if(tauler.activePlayer.getName().equals(tauler.players[0].getName())){
                     player2 = 1;
@@ -35,6 +36,13 @@
                 color = "#2E8B57";
             }else{
                 color = "#f00";
+            }
+            if(tauler.winner != 0){
+                if(tauler.winner == 1){
+                    winnerName = tauler.players[0].getName();
+                }else{
+                    winnerName = tauler.players[1].getName();
+                }
             }
         %>
         <link rel="StyleSheet" href="./Style/pag_joc_estils.css" type="text/css">
@@ -54,33 +62,36 @@
             <h1>3 EN RATLLA</h1>
 		<div id="capa_joc">
 			<div id="capa_taulell" align="center">
-				<table id="taulell_joc">
-                                    <%for(int f=0; f<3; f++){%>
-                                        <tr>
-                                        <%
-                                        for(int j=0; j<3; j++){                                            
-                                            td_color = "";
-                                            click = "";
-                                            if(tauler.caselles[f][j] == 1){                                                
-                                                td_color = "style='background-color:#2E8B57'";
-                                            }else if(tauler.caselles[f][j] == 2){
-                                                td_color = "style='background-color:#f00'";
-                                            }else if(tauler.activePlayer != null){
-                                                if(!tauler.activePlayer.getName().equals(player.getName())){
-                                                click = "onclick='select(this.id)'";
+				<%if(tauler.winner != 0){%>
+                                    <div align="center"><h2>Ha guanyat en <%=winnerName%></h2></div>
+                                <%}else{%>
+                                    <table id="taulell_joc">
+                                        <%for(int f=0; f<3; f++){%>
+                                            <tr>
+                                            <%
+                                            for(int j=0; j<3; j++){                                            
+                                                td_color = "";
+                                                click = "";
+                                                if(tauler.caselles[f][j] == 1){                                                
+                                                    td_color = "style='background-color:#2E8B57'";
+                                                }else if(tauler.caselles[f][j] == 2){
+                                                    td_color = "style='background-color:#f00'";
+                                                }else if(tauler.activePlayer != null){
+                                                    if(!tauler.activePlayer.getName().equals(player.getName())){
+                                                    click = "onclick='select(this.id)'";
+                                                    }
                                                 }
+                                                %>
+                                                <td id='<%=f+"_"+j%>' <%=td_color%>  <%=click%> >&nbsp;</td>
+                                                <%
                                             }
                                             %>
-                                            <td id='<%=f+"_"+j%>' <%=td_color%>  <%=click%> >&nbsp;</td>
+                                            </tr>
                                             <%
                                         }
-                                        %>
-                                        </tr>
-                                        <%
-                                    }
-                                        %>
-				</table>
-				
+                                            %>
+                                    </table>
+				<%}%>
 				<table id="taula_lateral">
 					<tr> 
 						<td>&nbsp;</td>

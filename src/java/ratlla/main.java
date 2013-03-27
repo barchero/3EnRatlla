@@ -35,8 +35,13 @@ public class main extends HttpServlet {
         super.init();              
         
     }
-
-     protected void startTaulers(int num){
+    protected void restartTaulers(int num){
+        this.Taulers.clear();
+        startTaulers(num);
+               
+    }
+    
+    protected void startTaulers(int num){
         for(int i = 0; i<num; i++){
             addTauler(i);
         }
@@ -87,8 +92,16 @@ public class main extends HttpServlet {
           Player player;
           Tauler tauler;
           String url;
+          String test = request.getParameter("submit_inicialitzar");
+          String test2 = request.getParameter("submit_reiniciar");
           
-          if ((Player)session.getAttribute("player") == null) {
+          if(request.getParameter("submit_inicialitzar")!=null){
+              startTaulers(5);
+              url = "admin.jsp";
+          }else if(request.getParameter("submit_reiniciar")!=null){   
+              restartTaulers(5);
+              url="admin.jsp";
+          }else if ((Player)session.getAttribute("player") == null) {
             String nom = (String)request.getParameter("inputNomFormLogin");
             if( playerRepeat(nom) == false){
                 player = new Player(nom);
@@ -117,6 +130,7 @@ public class main extends HttpServlet {
             String posY = request.getParameter("y");
             if(posX != "" && posY != ""){
                 tauler.choiceCell(posX, posY, player);
+                tauler.checkWinner();
             }
             //location.reload(true);
             url = "game.jsp";
