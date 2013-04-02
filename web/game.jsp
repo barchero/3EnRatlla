@@ -131,7 +131,7 @@
                                                             ><% if(tauler.players[1] != null){out.println(tauler.players[1].getName());}%></td>
 						</tr>
 						<tr>
-							<td id="explicacioJoc" colspan="2">wee</td>
+							<td id="explicacioJoc" colspan="2">Espera a l'altre jugador i posa una casella blava del teu color,<br>el primer que fa 3 en ratlla guanya!!</td>
 						</tr>
 						<tr>
 							<td id="contador" colspan="2">10</td>
